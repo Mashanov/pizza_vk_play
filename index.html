@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Ресторан || пиццерия || кухня</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link type="text/css" rel="stylesheet" href="style.css" />
+		<script type="text/javascript" src="//vkplay.ru/app/[GMRID]/static/mailru.core.js"></script>
+	</head>
+	<body>
+		
+		<div id="background">
+			<div class="window" style="left: 160px;"></div>
+			<div class="window" style="right: 160px;"></div>
+		</div>
+		<div id="user"></div>
+		<div id="message"></div>
+		<div id="ok" onclick="document.querySelector('#tableGame').style.display = 'block';this.style.display = 'none'">Ок</div>
+		<div id="table"></div>
+		<div id="cash"></div>
+		<div id="moneyBlock"><mo style="color: rgb(32, 167, 32)">$ </mo>0</div>
+		<div id="notification"></div>
+
+		<div id="menu">
+			<div id="backgroundMenu"></div>
+			<div id="menuLogo"></div>
+			<div id="house"></div>
+			<div id="menuName">Пиццерия</div>
+			<div class="menu" onclick="gameStart ()">Играть</div>
+			<div class="menu" onclick="document.querySelector('shop').style.left = 0">Магазин</div>
+			<div id="sectionMenuBottom">
+				<div class="sectionMenu" onclick="vkBridge.send('VKWebAppShowInviteBox')">
+					<div class="imageMenuSection" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLU9HH8SL4KEBw_aNHvauDE2kfFKBTiuI-Ahv5CkHPHk42KcNuIt_FlkzGvQoRsXNCOMshOLOUSShdR2CEzPdRSDAgMSct1aL47HySnfoy4fGRVIg6cij8aexupEL1HtxsAzZ-weFap8majloQgvIiHu=s512-no?authuser=0');"></div>
+					<div class="textMenuSection">Пригласить друзей</div>
+				</div>
+				<a href="https://vk.com/diff_games">
+					<div class="sectionMenu" style="left: 22.5px;">
+						<div class="imageMenuSection" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLVSVjBlfTMORIvJxDEIxzhW1C5BfbzPPAUA_Ic75SolUf5s6hXzYpVaQVwoRPeFevMaatl1MwWXChGaRV_TGKqpO8F9SC3ju0QJ2Sgbyy9Cxonq-L51kzB6OAZIZwP8nlFBYag6_Fw6Pb72NKJq3M1S=s512-no?authuser=0');"></div>
+						<div class="textMenuSection">Группа игры</div>
+					</div>
+				</a>
+				<div class="sectionMenu" style="left: 45px;" onclick="document.querySelector('about').style.left = 0">
+					<div class="imageMenuSection" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLUZ6VUmr2PQr1i67j5q_XDwPo9ngyDpLrxaNsUiq-sUu8E8d-Uh_iEbCgnhr93hDpet1eXv5QYo6KVCvyzKTtefzhDUmcJJ8uUfXqZAjAQbzjSRJvz6TS5fknyI_mDewq7gPldIOAvPXJB5AXXEoAvi=s512-no?authuser=0')"></div>
+					<div class="textMenuSection" style="bottom: 10px;">Об игре</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="tableGame" style="display: none;">
+			<div id="backgroundTable"></div>
+			<div id="ingredients">
+				<div class="voiceIngredient" onclick="if (UserPrompt == false) nextArray ();document.querySelector('#pizza').style.background = '#ef8181';" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLUi7RMOVaulndCa_g-1bve8cYW24ekzYRjnrLWUrHUUM3d36mInnXRgvAoiXldnPkLuOnKKTXGkXtuS_HwoNM-KZ3P_6CkcCW-Ms0E56bKmbK8Q7sIBboCc-Vv6Sq-UElTJifJigfxUoodUfgkg6yUZ=s512-no?authuser=0')"></div>
+				<div class="voiceIngredient voiceIngredientTrue" onclick="clickVoiceIngredient (1, this);if (UserPrompt == false) nextArray ()" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLVQ8DMUqJMi1-rRTeacXOFB_eRqAy5UI4Ttx11jGCbpG63BGwNPoj-KYxnN-sAW06S5Mx91ICaO85SFLp2C2ahc-bYbUDf39Pvtxv7QeXU1sPhF1j9LgVTpBX3E_8m5F09Ed0NUp_wp1lcAVJXw62x7=s512-no?authuser=0');opacity: 0.2;pointer-events: none"></div>
+				<div class="voiceIngredient" onclick="clickVoiceIngredient (2, this)" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLWjxzny16PkgMShmQiBSWV_4O6MPNYpOoo29QoY4PMYfCnr5nIV-yQZ6o512CgAm6Dsp5LG4L_ZdDh4-xErNUev8jSR4PxAfON7cBtX5PfpPkVz0MnfGw5U_P-2wHa647N4EsySAK7gVFc_Yuojrl_B=s512-no?authuser=0');opacity: 0.2;pointer-events: none"></div>
+				<div class="voiceIngredient" onclick="clickVoiceIngredient (3, this)" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLUOX10_2knbAYzIz8S9RC5uBzfTxosufly8VfqiLuP5JwEGi5yyInTcnyLjWCs1FWdsd4JJbzF-Lm0B4Cz5dCdWh5tNF9xmx-QkospIt6QS1L9kKz_44_uIIF8zc0sdGXFOvpJF3rnLPEBgQVmvgkv6=s512-no?authuser=0');opacity: 0.2;pointer-events: none"></div>
+				<div class="voiceIngredient" onclick="clickVoiceIngredient (4, this)" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLXXttRfSLtd3IG4UWUBmrkRoTb__VvuNwBXC9Jz57aw85-D_jXzF_XIPc4hgN-IKqJlKX73meucKrtJzI9_QUUMWJnr56l4uZauQ_dzf80Xmg7-u7hOrKVjfR0WQVKOqM4x4GjcCPasJ5mAKMfBGaP3=s512-no?authuser=0');opacity: 0.2;pointer-events: none"></div>
+				<div class="voiceIngredient" onclick="clickVoiceIngredient (5, this)" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLXWVi1vJV4PUiq8f2yvaBBVCv96JecJSb-lmEpIL_03mOveFIAK9rnsIp4E6IndOLGibSgzLp-2ChpB2mS7YHYNme3lm0LffKCBIpYQon3uZ2l2RRTZbOWZlt7_65E3TDF5X9444JfJEmFaZBpCYRs2=s512-no?authuser=0');opacity: 0.2;pointer-events: none"></div>
+				<div class="voiceIngredient" onclick="document.querySelector('#sheese').style.opacity = 0.5" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLVLq2TChW2W4iUSQzGl5kbXl0LcxJgoqDpwaRgAmeI1c6LOcVY76wOqFWC3vZC-ZnI4LGVQNTx25M4caNA-YmORiSPOzS6QGZ2_NmmFioVxSjlpQqitYLmDfX22c-5QboQqfF4QTFOA2M2Qi5jXO5qJ=s512-no?authuser=0');opacity: 0.2;pointer-events: none"></div>
+			</div>
+			<div id="arrow"></div>
+			<div id="CuttingBoard">
+				<div id="pizzaBoard">
+					<div onclick="clickPizza ()" id="pizza"></div>
+				</div>
+			</div>
+			<div id="sheese"></div>
+			<botton onclick="deletePizza ()" class="downBotton" style="left: 3.3%;background: rgba(255, 255, 255, 0);border: 2px solid #fff">В мусорку</botton>
+			<botton onclick="pizzaReady ()" class="downBotton" style="right: 3.3%;background: #ff8d00;">В печь</botton>
+			<div id="backgroundPrompt">
+				<div id="blockPrompt">Добавь соус в пиццу</div>
+			</div>
+		</div>
+
+		<div id="backgroundPause" style="display: none">
+			<div id="blockPause" onclick="this.parentNode.style.display = 'none'">Рабочий день окончен</div>
+		</div>
+
+		<shop>
+			<div class="NameSection">Магазин</div>
+			<div class="closeShop" onclick="this.parentNode.style.left = '-100%'">✕</div>
+			<div id="moneyShopImage"></div>
+			<div id="moneyShopText">$ 0</div>
+			<div id="adsMoney" onclick="vkBridge.send('VKWebAppShowNativeAds', {ad_format:'reward'}).then(function (){ordersMon += 3;document.querySelector('#moneyShopText').innerText = '$ ' + ordersMon; document.querySelector('#moneyBlock').innerHTML = '<mo style=\'color: rgb(32, 167, 32)\'>$ </mo>' + ordersMon;})
+.catch(error => console.log(error));">$3 за просмотр рекламы</div>
+			<div class="section">
+				<div class="sectionName">Ингредиенты</div>
+				<div class="blockBuy">
+					<div class="imageShop" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLWjxzny16PkgMShmQiBSWV_4O6MPNYpOoo29QoY4PMYfCnr5nIV-yQZ6o512CgAm6Dsp5LG4L_ZdDh4-xErNUev8jSR4PxAfON7cBtX5PfpPkVz0MnfGw5U_P-2wHa647N4EsySAK7gVFc_Yuojrl_B=s512-no?authuser=0')"></div>
+					<div class="textBuy">Грибочки для пиццы, многие их просто обожают</div>
+					<div class="buy" onclick="buy ('ingr', 1, 3, this)">3$</div>
+				</div>
+				<div class="blockBuy">
+					<div class="imageShop" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLUOX10_2knbAYzIz8S9RC5uBzfTxosufly8VfqiLuP5JwEGi5yyInTcnyLjWCs1FWdsd4JJbzF-Lm0B4Cz5dCdWh5tNF9xmx-QkospIt6QS1L9kKz_44_uIIF8zc0sdGXFOvpJF3rnLPEBgQVmvgkv6=s512-no?authuser=0')"></div>
+					<div class="textBuy">Зелень придаст пицце аромат и красивый внешний вид</div>
+					<div class="buy" onclick="buy ('ingr', 2, 10, this)">10$</div>
+				</div>
+				<div class="blockBuy">
+					<div class="imageShop" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLXXttRfSLtd3IG4UWUBmrkRoTb__VvuNwBXC9Jz57aw85-D_jXzF_XIPc4hgN-IKqJlKX73meucKrtJzI9_QUUMWJnr56l4uZauQ_dzf80Xmg7-u7hOrKVjfR0WQVKOqM4x4GjcCPasJ5mAKMfBGaP3=s512-no?authuser=0')"></div>
+					<div class="textBuy">Помидорки дадут вашей пицце легкую кислинку</div>
+					<div class="buy" onclick="buy ('ingr', 3, 25, this)">25$</div>
+				</div>
+				<div class="blockBuy">
+					<div class="imageShop" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLXWVi1vJV4PUiq8f2yvaBBVCv96JecJSb-lmEpIL_03mOveFIAK9rnsIp4E6IndOLGibSgzLp-2ChpB2mS7YHYNme3lm0LffKCBIpYQon3uZ2l2RRTZbOWZlt7_65E3TDF5X9444JfJEmFaZBpCYRs2=s512-no?authuser=0')"></div>
+					<div class="textBuy">Огурцы добавят свежести и неповторимый хруст</div>
+					<div class="buy" onclick="buy ('ingr', 4, 50, this)">50$</div>
+				</div>
+			</div>
+			<div class="section">
+				<div class="sectionName">Улучшения</div>
+				<div class="blockBuy">
+					<div class="imageShop" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLWs7tz6iwdGUsqGtaB6SRSDHXB-Nvo4GZmrXkJH8zvU5kUeX3VOvLAElICAoQUi7-H9i38pMINUhvEyPrS6YxRNM7zeAeV6ne5vkj8AxD1szE6dsM2p8-gc__WCNL8IA_WZSYBCH7hlZp3G53Iwq2Dm=s512-no?authuser=0')"></div>
+					<div class="textBuy">Поставить автомат с напитками. Каждую смену приносит дополнительно 3$</div>
+					<div class="buy" onclick="buy ('upgr', 1, 10, this)">10$</div>
+				</div>
+				<div class="blockBuy">
+					<div class="imageShop" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLX7M0BV7tNESBJs4NgVqezGgIGSIu2MHEics4C3lLDWaMIZemVN5i0GtX2frQyzrNCOGBeHo1Te7Bk2kJmT91d4wGGa4TV48T2jYC7nK1kS-ivtS9FcZ39EzgG4bQ0zh3f7K55TjZCMEEL1RVlprsCM=s512-no?authuser=0')"></div>
+					<div class="textBuy">Купить рекламу по телевизору. Увеличит вашу прибыль с продажи пиццы</div>
+					<div class="buy" onclick="buy ('upgr', 2, 30, this)">30$</div>
+				</div>
+				<div class="blockBuy">
+					<div class="imageShop" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLXtnnZADTCF0dTR3B15b9kW42F_f5sZvcyrcuoopTgairYJ4DZ6ChJqmxq5G3lDE0WEERKSNQ8m2JpbDr2m--KStfJtDeXtmpGuV4cEpjKSey-ACS_VWGBa7gFWLJGw_syWbFn2G1rKx2h3pOJ-wVxM=s512-no?authuser=0')"></div>
+					<div class="textBuy">Нанять лучшего в городе поставщика продуктов. Увеличит вашу прибыль с продажи пиццы</div>
+					<div class="buy" onclick="buy ('upgr', 3, 50, this)">50$</div>
+				</div>
+			</div>
+		</shop>
+
+		<about>
+			<div class="NameSection">Об игре</div>
+			<div class="closeShop" onclick="this.parentNode.style.left = '-100%'">✕</div>
+			<div class="aboutText">Что за игра ?<br><br>Пиццерия - экономическая игра, симулятор. Вы владелец небольшой пиццерии, к вам приходят гости и делают заказы на изготовление пиццы, ваша задача обслужить клиентов. За успешное выполнение заказа предусмотрено вознаграждение в виде игровой валюты. Игровую валюту вы можете потратить на покупку новых ингредиентов для пиццы или улучшения своего заведения.<hr><br>
+			Как играть ?<br><br>Для игры необходимо нажать кнопку "Играть" в главном меню игры. Перед вами появится посетитель вашей пиццерии, прочитайте его заказ и нажмите кнопку "Ок", после чего перед вами появится кухонный стол с ингредиентами. Разложите необходимые ингредиенты как сказано в заказе и нажмите кнопку "В печь". Если вы ошиблись и положили не тот ингредиент или хотите начать делать пиццу заново, нажмите кнопку "В мусорку".<hr><br>
+			Связь с разработчиками игры<br><br>Для связи с разработчиками игры вы можете написать сообщение Вконтакте перейдя по ссылке https://vk.com/im?media=&sel=-193728370<hr><br>
+			</div>
+		</about>
+	</body>
+
+	<script src="script.js"></script>
+</html>
