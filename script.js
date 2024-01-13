@@ -1,13 +1,8 @@
-(function apiHandshake(iframeApi) {
-    if (typeof iframeApi === 'undefined') {
-        console.log('Cannot find iframeApi function, are we inside an iframe?');
-        return;
-    }
+function apiHandshake() {
 
     var externalApi = null;
-
     var callbacks = {
-        appid: [GMRID],
+        appid: 32855,
 
         getLoginStatusCallback: function(status) {},
         userInfoCallback: function(info) {},
@@ -30,29 +25,8 @@
         externalApi = api;
     }
 
-    // пример вызова действия "Регистрация"
-    const registerBlock = document.getElementById("register");
-    registerBlock.addEventListener("click", (e) => {
-        e.preventDefault();
-        externalApi.registerUser();
-    });
-
-    // пример вызова действия "Вход"
-    const authBlock = document.getElementById("auth");
-    authBlock.addEventListener("click", (e) => {
-        e.preventDefault();
-        externalApi.authUser();
-    });
-
-    // пример получения профиля
-    const profileBlock = document.getElementById("profile");
-    profileBlock.addEventListener("click", (e) => {
-        e.preventDefault();
-        externalApi.userProfile();
-    });
-
     iframeApi(callbacks).then(connected, error);
-}(window.iframeApi));
+};
 
 var ingredient = 1,
 ingredients = {
