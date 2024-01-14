@@ -231,7 +231,7 @@ function result (text, money)
     textRe = text;
     textRead ();
 
-    if (orders >= 5)
+    if (orders >= 3)
     {
         setTimeout( function ()
         {
