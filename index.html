@@ -29,17 +29,13 @@
 			<div class="menu" onclick="gameStart ()">Играть</div>
 			<div class="menu" onclick="document.querySelector('shop').style.left = 0">Магазин</div>
 			<div id="sectionMenuBottom">
-				<div class="sectionMenu" onclick="vkBridge.send('VKWebAppShowInviteBox')">
-					<div class="imageMenuSection" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLU9HH8SL4KEBw_aNHvauDE2kfFKBTiuI-Ahv5CkHPHk42KcNuIt_FlkzGvQoRsXNCOMshOLOUSShdR2CEzPdRSDAgMSct1aL47HySnfoy4fGRVIg6cij8aexupEL1HtxsAzZ-weFap8majloQgvIiHu=s512-no?authuser=0');"></div>
-					<div class="textMenuSection">Пригласить друзей</div>
-				</div>
 				<a href="https://vk.com/diff_games">
-					<div class="sectionMenu" style="left: 22.5px;">
+					<div class="sectionMenu" style="left: 45px;">
 						<div class="imageMenuSection" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLVSVjBlfTMORIvJxDEIxzhW1C5BfbzPPAUA_Ic75SolUf5s6hXzYpVaQVwoRPeFevMaatl1MwWXChGaRV_TGKqpO8F9SC3ju0QJ2Sgbyy9Cxonq-L51kzB6OAZIZwP8nlFBYag6_Fw6Pb72NKJq3M1S=s512-no?authuser=0');"></div>
 						<div class="textMenuSection">Группа игры</div>
 					</div>
 				</a>
-				<div class="sectionMenu" style="left: 45px;" onclick="document.querySelector('about').style.left = 0">
+				<div class="sectionMenu" style="left: 75px;" onclick="document.querySelector('about').style.left = 0">
 					<div class="imageMenuSection" style="background-image: url('https://lh3.googleusercontent.com/pw/AM-JKLUZ6VUmr2PQr1i67j5q_XDwPo9ngyDpLrxaNsUiq-sUu8E8d-Uh_iEbCgnhr93hDpet1eXv5QYo6KVCvyzKTtefzhDUmcJJ8uUfXqZAjAQbzjSRJvz6TS5fknyI_mDewq7gPldIOAvPXJB5AXXEoAvi=s512-no?authuser=0')"></div>
 					<div class="textMenuSection" style="bottom: 10px;">Об игре</div>
 				</div>
@@ -80,8 +76,7 @@
 			<div class="closeShop" onclick="this.parentNode.style.left = '-100%'">✕</div>
 			<div id="moneyShopImage"></div>
 			<div id="moneyShopText">$ 0</div>
-			<div id="adsMoney" onclick="vkBridge.send('VKWebAppShowNativeAds', {ad_format:'reward'}).then(function (){ordersMon += 3;document.querySelector('#moneyShopText').innerText = '$ ' + ordersMon; document.querySelector('#moneyBlock').innerHTML = '<mo style=\'color: rgb(32, 167, 32)\'>$ </mo>' + ordersMon;})
-.catch(error => console.log(error));">$3 за просмотр рекламы</div>
+			<div id="adsMoney" onclick="adsRewardYa ()">$3 за просмотр рекламы</div>
 			<div class="section">
 				<div class="sectionName">Ингредиенты</div>
 				<div class="blockBuy">

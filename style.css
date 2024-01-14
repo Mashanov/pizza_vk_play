@@ -213,7 +213,7 @@ html {
     height: 80px;
     left: 10px;
     top: 100px;
-    background-image: url(/images/arrow.gif);
+    background-image: url(images/arrow.gif);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
