@@ -68,7 +68,42 @@ iText = 1,
 ordersMon = 0,
 upgrade = 0,
 orders = 0,
+userSave = [0, 0, 0],
 UserPrompt = false;
+
+if (localStorage.getItem('game') != null){
+    
+    userSave = JSON.parse( localStorage.getItem('game') );
+
+    UserPrompt = true;
+    document.querySelector('#arrow').remove();
+    document.querySelector('#backgroundPrompt').remove();
+    document.querySelectorAll('.downBotton')[1].style.zIndex = 'auto';
+    document.querySelector('.voiceIngredient').style.opacity = 1;
+    document.querySelector('.voiceIngredient').style.pointerEvents = 'auto';
+    document.querySelector('.voiceIngredientTrue').style.opacity = 1;
+    document.querySelector('.voiceIngredientTrue').style.pointerEvents = 'auto';
+    document.querySelector('.voiceIngredient[onclick="document.querySelector(\'#sheese\').style.opacity = 0.5"]').style.opacity = 1;
+    document.querySelector('.voiceIngredient[onclick="document.querySelector(\'#sheese\').style.opacity = 0.5"]').style.pointerEvents = 'auto';
+
+    ordersMon = userSave[0];
+    playerLvl = userSave[1];
+    upgrade = userSave[2];
+
+    document.querySelector('#moneyShopText').innerText = '$ ' + ordersMon;
+    document.querySelector('#moneyBlock').innerHTML = '<mo style="color: rgb(32, 167, 32)">$ </mo>' + ordersMon;
+
+    for ( var i = 0; i < userSave[1]; i++ ){
+
+        document.querySelectorAll('.section')[0].querySelector('.blockBuy').remove();
+        var elem = document.querySelector('div.voiceIngredient[onclick="clickVoiceIngredient (' + (i + 2) + ', this)"]');
+        elem.style.opacity = 1;
+        elem.style.pointerEvents = 'auto';
+    }
+
+    for ( var i = 0; i < userSave[2]; i++ )
+        document.querySelectorAll('.section')[1].querySelector('.blockBuy').remove();
+}
 
 function textRead ()
 {
@@ -89,6 +124,14 @@ function clickVoiceIngredient (from, elementHT)
     document.querySelector('div.voiceIngredientTrue').className = 'voiceIngredient';
     elementHT.className = 'voiceIngredient voiceIngredientTrue';
 }
+
+function save ()
+{
+
+    localStorage.setItem('game', JSON.stringify(userSave));
+}
+
+setInterval(save, 10000);
 
 function clickPizza ()
 {
@@ -282,6 +325,8 @@ function result (text, money)
     else if (money > 0 && upgrade == 3) money = 1.5;
 
     ordersMon = ordersMon + money;
+    userSave[0] = ordersMon;
+
     document.querySelector('#moneyShopText').innerText = '$ ' + ordersMon;
     document.querySelector('#moneyBlock').innerHTML = '<mo style="color: rgb(32, 167, 32)">$ </mo>' + ordersMon;
     document.querySelector('#notification').innerText = '$' + money;
@@ -304,6 +349,8 @@ function buy (from, numb, howMath, elem)
     if (from == 'upgr' && (upgrade + 1) !== numb) return null;
 
     ordersMon -= howMath;
+    userSave[0] = ordersMon;
+
     document.querySelector('#moneyShopText').innerText = '$ ' + ordersMon;
     document.querySelector('#moneyBlock').innerHTML = '<mo style="color: rgb(32, 167, 32)">$ </mo>' + ordersMon;
 
@@ -314,6 +361,8 @@ function buy (from, numb, howMath, elem)
         else elem.parentNode.remove ();
 
         playerLvl = numb;
+        userSave[1] = playerLvl;
+
         elem = document.querySelector('div.voiceIngredient[onclick="clickVoiceIngredient (' + (numb + 1) + ', this)"]');
         elem.style.opacity = 1;
         elem.style.pointerEvents = 'auto';
@@ -324,6 +373,7 @@ function buy (from, numb, howMath, elem)
         else elem.parentNode.remove ();
 
         upgrade = numb;
+        userSave[2] = upgrade;
     }
 
     if (!document.querySelector('shop div.section'))
